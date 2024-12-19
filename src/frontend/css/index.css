@@ -1,0 +1,48 @@
+p {
+  color: white;
+}
+.divMenu {
+  background-color: rgb(0, 81, 255);
+  width: 100%;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  align-items: center;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  display: flex;
+}
+.divMenuLogoDiv {
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  width: 70px;
+}
+.divMenuLogo {
+  display: flex;
+  align-items: center;
+  width: 70px;
+  width: 70px;
+}
+.divText1 {
+  margin-left: 15px;
+  font-size: 18px;
+}
+.vertical-pipe {
+  margin-left: 5px;
+}
+#divTimeMath {
+  margin-left: 5px;
+  font-size: 18px;
+}
+@media (max-width: 767px) {
+  .divText1 {
+    white-space: nowrap;
+    margin-left: 25px;
+  }
+  .divMenu {
+    padding-left: 0.5rem;
+  }
+  .divMenuLogo {
+    margin-left: 10px;
+  }
+}
