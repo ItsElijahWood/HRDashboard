@@ -1,0 +1,7 @@
+# Editors
+.vscode
+.vs
+.idea
+
+# Enviromental Variables
+.env
