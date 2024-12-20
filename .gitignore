@@ -1,0 +1,10 @@
+# Enviromental Variables
+.env
+
+# Editors
+.vs 
+.vscode
+.idea
+
+# js
+.node_modules
