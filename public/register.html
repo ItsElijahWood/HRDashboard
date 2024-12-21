@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HR Register</title>
+    <link rel="stylesheet" href="../src/css/login.css" />
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="divMenu">
+      <div class="divMenuLogoDiv">
+        <img
+          class="divMenuLogo"
+          src="../src/assets/dashboardimage.png"
+          alt="Computer"
+        />
+      </div>
+      <p class="divText1">Human Resource Dashboard</p>
+      <p class="vertical-pipe">|</p>
+      <p id="divTimeMath"></p>
+    </div>
+    <div class="center-wrapper">
+      <div class="register-container">
+        <h1>Register an Account</h1>
+        <form action="http://localhost:3000/register" method="POST">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required />
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+    <script src="../src/js/getTime.js"></script>
+  </body>
+</html>

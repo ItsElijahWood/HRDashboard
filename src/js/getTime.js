@@ -1,6 +1,13 @@
 function isMobile() {
   const width = window.innerWidth;
-  return width <= 768;
+
+  if (width <= 417) {
+    return null;
+  } else if (width <= 768) {
+    return "currentTime";
+  }
+
+  return "currentTimeAndTimeZone";
 }
 
 // Creates options variable to store temporary times
@@ -17,11 +24,15 @@ function getTimeInTimeZone(timeZone) {
 
     const formatter = new Intl.DateTimeFormat("en-UK", options);
     const currentTime = formatter.format(new Date());
-    if (isMobile()) {
+    const mobileS = isMobile();
+
+    if (mobileS === "currentTime") {
       return `${currentTime}`;
-    } else {
+    } else if (mobileS === "currentTimeAndTimeZone") {
       return `${currentTime} ${timeZone}`;
     }
+
+    return ""; // Return width when <= 400px
   } catch (error) {
     console.error("Invalid timezone:", error.message);
     return null;
