@@ -1,0 +1,95 @@
+.dataSelector {
+  background-color: #f9f9f9;
+  padding: 45px;
+  justify-content: center;
+  gap: 30px;
+  display: block;
+}
+.active {
+  text-decoration: underline;
+  font-weight: bold;
+  color: blue;
+}
+.myemployeebtn,
+.recruitmentbtn,
+.managetimebtn {
+  color: black;
+  text-decoration: none;
+  padding: 5px 20px;
+  font-size: 22px;
+}
+form {
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.buttonForm {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.fieldForm {
+  width: 94.5%;
+  padding: 10px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.employee-data {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.employee-row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.header-row {
+  font-weight: bold;
+  background-color: #f0f0f0;
+}
+
+.employee-column {
+  width: 150px; 
+  padding: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.header-column {
+  background-color: #e0e0e0; 
+  font-weight: bold;
+}
+
