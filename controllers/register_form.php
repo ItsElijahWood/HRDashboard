@@ -1,3 +1,4 @@
+Only a testing file not to be used in production
 <?php
   $mysqli = require __DIR__ . "/../include/hrdata.php";
 
@@ -31,7 +32,7 @@
     $stmt->bind_param('sssis', $user, $hashedPassword, $email, $age, $sex);
     
     if ($stmt->execute()) {
-      echo "Signup successful";
+      header("Location: ../index");
     } else {
       echo "Error: " . $stmt->error;
     }

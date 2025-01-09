@@ -1,6 +1,6 @@
 <?php
   $pageTitle = "HR Login";
-  include("../include/session.php");
+  include(__DIR__ . "/../include/session.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/css/login.css" />
 </head>
 <body>
-  <?php include("../include/header.php"); ?> 
+  <?php include(__DIR__ . "/../include/header.php"); ?> 
 
   <?php if (isset($user)): ?>
   <?php else: ?>

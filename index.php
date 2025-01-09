@@ -1,5 +1,5 @@
 <?php
-  include("./include/session.php");
+  include(__DIR__ . "./include/session.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@
   <link rel="icon" href="./assets/img/logo.png" type="image/png">
 </head>
 <body>
-  <?php include("./include/header.php"); ?>
+  <?php include(__DIR__ . "./include/header.php"); ?>
 
   <?php if (isset($user)): ?>
     <p>Logged in</p>
