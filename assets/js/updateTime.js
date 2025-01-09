@@ -1,4 +1,4 @@
-import config from "../../config.js";
+import config from "../../config/config.js";
 
 // Function updates every 10000ms to keep time updated,
 // from getTime.php.

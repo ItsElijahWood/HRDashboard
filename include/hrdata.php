@@ -1,10 +1,10 @@
 <?php
-  $config = include "../config.php";
+  $config = require(__DIR__ . "/../config/config.php");
 
   // Require database creds from config.php.
   $dbHost = $config['dbHost'];
   $dbUser = $config['dbUser'];
-  $dbPass = $config['token'];
+  $dbPass = $config['dbPass'];
   $servername = $config['hrdataDb'];
 
   // Executes db cred.

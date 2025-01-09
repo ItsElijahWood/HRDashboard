@@ -18,6 +18,14 @@
   padding: 5px 20px;
   font-size: 22px;
 }
+@media (max-width: 480px) {
+  .myemployeebtn,
+  .recruitmentbtn,
+  .managetimebtn {
+    padding: 5px 20px;
+    display: flex;
+  }
+}
 form {
   width: 300px;
   margin: 50px auto;
@@ -82,14 +90,13 @@ input[type="text"] {
 }
 
 .employee-column {
-  width: 150px; 
+  width: 150px;
   padding: 5px;
   border: 1px solid #ccc;
   text-align: center;
 }
 
 .header-column {
-  background-color: #e0e0e0; 
+  background-color: #e0e0e0;
   font-weight: bold;
 }
-

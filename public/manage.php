@@ -17,14 +17,12 @@
     <?php include("../include/header.php"); ?>
 
     <?php if (isset($user)): ?>
-    <?php $employeeData = fetchEmployeeData(); ?>
         <div class="dataSelector">
-            <a class="myemployeebtn" onclick="highlightBtn(this)">My Employees</a>
-            <a class="recruitmentbtn" onclick="highlightBtn(this)">Recruitment</a>
-            <a class="managetimebtn" onclick="highlightBtn(this)">Manage Time</a>
+            <a class="myemployeebtn" onclick="highlightBtn(this); loadMyEmployees()">My Employees</a>
+            <a class="recruitmentbtn" onclick="highlightBtn(this); clearEmployee()">Recruitment</a>
+            <a class="managetimebtn" onclick="highlightBtn(this); clearEmployee();">Manage Time</a>
         </div>
-        <div class="employee-data">
-            <?php renderDivs($employeeData, ['Full Name', 'Job Title', 'Department']); ?> 
+        <div class="employee-data" id="employeeDataContainer">
         </div>
     <?php else: ?>
         <form action="../controllers/login_form.php" method="POST">
@@ -50,6 +48,20 @@
             const buttons = document.querySelectorAll('.dataSelector a');
             buttons.forEach(button => button.classList.remove('active'));
             elm.classList.add('active');
+        }
+
+        function loadMyEmployees() {
+            fetch("../controllers/getEmployeeData.php")
+                .then((response) => response.text())
+                .then((data) => {
+                // Update employee data container with the content.
+                document.getElementById("employeeDataContainer").innerHTML = data;
+            })
+            .catch((error) => console.error("Error fetching employee data:", error));
+        }
+
+        function clearEmployee() {
+            document.getElementById('employeeDataContainer').innerHTML = '';
         }
     </script>
 </body>
