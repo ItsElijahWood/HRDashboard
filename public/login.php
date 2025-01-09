@@ -12,16 +12,27 @@
   <link rel="stylesheet" href="../assets/css/login.css" />
 </head>
 <body>
-   <?php include("../include/header.php"); ?> 
-   <?php if (isset($user)): ?>
-    <p>You are already logged in.</p>
-   <?php else: ?>
-   <form action="../controllers/login_form.php" method="POST">
-        <input class="fieldForm" type="email" name="email" id="email" placeholder="Email"
+  <?php include("../include/header.php"); ?> 
+
+  <?php if (isset($user)): ?>
+  <?php else: ?>
+    <form action="../controllers/login_form.php" method="POST">
+      <input 
+        class="fieldForm" 
+        type="email" 
+        name="email" 
+        id="email" 
+        placeholder="Email"
         value="<?= htmlspecialchars($_POST["email"] ?? "") ?>" required><br><br>
-        <input class="fieldForm" type="password" name="password" id="password" placeholder="Password" required><br><br>
-        <button class="buttonForm" type="submit">Log in</button>
+      <input 
+        class="fieldForm" 
+        type="password" 
+        name="password" 
+        id="password" 
+        placeholder="Password" 
+        required><br><br>
+      <button class="buttonForm" type="submit">Log in</button>
     </form>
-   <?php endif; ?>
+  <?php endif; ?>
 </body>
 </html>

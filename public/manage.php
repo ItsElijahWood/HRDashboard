@@ -14,10 +14,10 @@
   <link rel="stylesheet" href="../assets/css/manage.css" />
 </head>
 <body>
-   <?php include("../include/header.php"); ?>
+    <?php include("../include/header.php"); ?>
 
-   <?php if (isset($user)): ?>
-   <?php $employeeData = fetchEmployeeData(); ?>
+    <?php if (isset($user)): ?>
+    <?php $employeeData = fetchEmployeeData(); ?>
         <div class="dataSelector">
             <a class="myemployeebtn" onclick="highlightBtn(this)">My Employees</a>
             <a class="recruitmentbtn" onclick="highlightBtn(this)">Recruitment</a>
@@ -26,14 +26,25 @@
         <div class="employee-data">
             <?php renderDivs($employeeData, ['Full Name', 'Job Title', 'Department']); ?> 
         </div>
-   <?php else: ?>
+    <?php else: ?>
         <form action="../controllers/login_form.php" method="POST">
-            <input class="fieldForm" type="email" name="email" id="email" placeholder="Email"
+            <input 
+                class="fieldForm" 
+                type="email" 
+                name="email" 
+                id="email" 
+                placeholder="Email"
                 value="<?= htmlspecialchars($_POST["email"] ?? "") ?>" required><br><br>
-            <input class="fieldForm" type="password" name="password" id="password" placeholder="Password" required><br><br>
+            <input 
+                class="fieldForm" 
+                type="password" 
+                name="password" 
+                id="password" 
+                placeholder="Password" 
+                required><br><br>
             <button class="buttonForm" type="submit">Log in</button>
         </form>
-   <?php endif; ?>
+    <?php endif; ?>
     <script>
         function highlightBtn(elm) {
             const buttons = document.querySelectorAll('.dataSelector a');

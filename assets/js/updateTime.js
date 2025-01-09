@@ -1,5 +1,7 @@
 import config from "../../config.js";
 
+// Function updates every 10000ms to keep time updated,
+// from getTime.php.
 function updateTime() {
   fetch(`${config.base_url}/include/getTime.php`)
     .then((response) => response.text())

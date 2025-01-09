@@ -18,6 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Fetch the user data
     $user = $result->fetch_assoc();
 
+    // Check if user's data fetched and users pass is set.
+    // Checks both passwords from hashed and see if its the same.
     if ($user && isset($user["password"])) {
         if (password_verify($_POST["password"], $user["password"])) {
             session_start();

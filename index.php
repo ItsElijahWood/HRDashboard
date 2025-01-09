@@ -11,10 +11,12 @@
 </head>
 <body>
   <?php include("./include/header.php"); ?>
+
   <?php if (isset($user)): ?>
     <p>Logged in</p>
   <?php else: ?>
     <p>Logged out</p>
   <?php endif; ?>
+
 </body>
 </html>

@@ -24,11 +24,13 @@
     <div class="MenuDiv">
       <button onclick="window.location.href='<?php echo $fullpath['base_url']; ?> /index.php';" class="button1">Home</button>
       <button onclick="window.location.href='<?php echo $fullpath['base_url']; ?> /public/manage.php';" class="button1">Manage</button>
+
       <?php if (isset($user)): ?>
         <button onclick="window.location.href='<?php echo $fullpath['base_url']; ?> /controllers/log_out.php';" class="button1">Log out</button>
       <?php else: ?>
         <button onclick="window.location.href='<?php echo $fullpath['base_url']; ?> /public/login.php';" class="button1">Log in</button>
       <?php endif; ?>
+
     </div>
   </div>
 </div>
