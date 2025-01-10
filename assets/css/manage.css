@@ -1,9 +1,8 @@
 .dataSelector {
   background-color: #f9f9f9;
   padding: 45px;
-  justify-content: center;
   gap: 30px;
-  display: block;
+  display: flex;
 }
 .active {
   text-decoration: underline;
@@ -15,15 +14,77 @@
 .managetimebtn {
   color: black;
   text-decoration: none;
-  padding: 5px 20px;
   font-size: 22px;
 }
+
+/* Logged out */
+.hroutmdiv {
+  background-color: #f1f1f1;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  display: flex;
+}
+.hroutmanagediv1p1 {
+  font-size: 20px;
+}
+.hroutmanagediv1 {
+  padding-left: 47px;
+}
+.hroutmanagediv2a1 {
+  font-size: 18px;
+}
+.hroutmanagediv2 {
+  padding-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hroutmanagediv2a1 {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  background-color: #f5f5f5;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 4.5px 15px;
+  border-radius: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.hroutmanagediv2a1:hover {
+  background-color: #007bff;
+  color: white;
+  border-color: #0056b3;
+  cursor: pointer;
+}
+
 @media (max-width: 480px) {
   .myemployeebtn,
   .recruitmentbtn,
   .managetimebtn {
-    padding: 5px 20px;
-    display: flex;
+    padding: 5px 47px;
+  }
+  .dataSelector {
+    display: block;
+  }
+
+  /* Logged out */
+  .hroutmanagediv1 {
+    padding-left: 20px;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .dataSelector {
+    padding-left: 20px;
+    padding-right: 45px;
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+  /* Logged out */
+  .hroutmanagediv1 {
+    padding-left: 20px;
   }
 }
 form {

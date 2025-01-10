@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HR Login</title>
+  <title>People Node</title>
   <link rel="icon" href="../assets/img/logo.png" type="image/png">
   <link rel="stylesheet" href="../assets/css/login.css" />
 </head>
@@ -16,6 +16,20 @@
 
   <?php if (isset($user)): ?>
   <?php else: ?>
+    <div class="hroutmdiv">
+      <div class="hroutmanagediv1">
+        <p class="hroutmanagediv1p1">
+          Back | 
+        </p>
+      </div>
+      <div class="hroutmanagediv2">
+        <a 
+          class="hroutmanagediv2a1" 
+          onclick="window.location.href='<?php echo $fullpath['base_url']; ?>';" class="button1">Home
+        </a>
+      </div>
+    </div> 
+    <h1 class="h1l">Log in</h1>
     <form action="../controllers/login_form.php" method="POST">
       <input 
         class="fieldForm" 

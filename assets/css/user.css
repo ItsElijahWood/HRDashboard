@@ -1,0 +1,175 @@
+.mainnamediv {
+  background-color: #f9f9f9;
+  padding-top: 5px;
+  padding-bottom: 18px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #f9f9f9;
+  border-radius: 10px;
+}
+.mainnamediv2 {
+  padding-left: 2.8rem;
+  background-color: #f9f9f9;
+  height: 100px;
+}
+.mainnamediv3 {
+  padding-left: 1.5rem;
+  background-color: #f9f9f9;
+  padding-bottom: 3px;
+}
+.mainnamediv3p1 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.ProfileIcon {
+  width: 80px;
+  margin-top: 22px;
+}
+.mainnamemdiv {
+  display: flex;
+}
+.mainnamemdiv2 {
+  margin-left: 25px;
+}
+.mainnamemdiv2p1 p {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.mainnamemdiv2p1 {
+  margin-top: 45px;
+}
+.ml {
+  margin-right: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.cutoffdiv1 {
+  background-color: #f1f1f1;
+  padding: 5px;
+  text-align: center;
+}
+.cutoffdiv1p1 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.hrmanagemdiv {
+  background-color: #f1f1f1;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  display: flex;
+}
+.hrmanagediv1p1 {
+  font-size: 20px;
+}
+.hrmanagediv1 {
+  padding-left: 47px;
+}
+.hrmanagediv2a1 .hrmanagediv2a1 {
+  font-size: 18px;
+}
+.hrmanagediv2 {
+  padding-left: 10px;
+  gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hrmanagediv2a2,
+.hrmanagediv2a1 {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  background-color: #f5f5f5;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 4.5px 15px;
+  border-radius: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.hrmanagediv2a2:hover,
+.hrmanagediv2a1:hover {
+  background-color: #007bff;
+  color: white;
+  border-color: #0056b3;
+  cursor: pointer;
+}
+
+/* Logged out */
+.hroutmdiv {
+  background-color: #f1f1f1;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  display: flex;
+}
+.hroutmanagediv1p1 {
+  font-size: 20px;
+}
+.hroutmanagediv1 {
+  padding-left: 47px;
+}
+.hroutmanagediv2a1 {
+  font-size: 18px;
+}
+.hroutmanagediv2 {
+  padding-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hroutmanagediv2a1 {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  background-color: #f5f5f5;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 4.5px 15px;
+  border-radius: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.hroutmanagediv2a1:hover {
+  background-color: #007bff;
+  color: white;
+  border-color: #0056b3;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .mainnamemdiv {
+    display: block;
+  }
+  .mainnamediv2 {
+    padding-left: 1rem;
+  }
+  .mainnamemdiv2 {
+    margin-left: 0;
+  }
+  .hrmanagediv1 {
+    padding-left: 20px;
+  }
+  .mainnamediv3 {
+    padding-left: 0;
+  }
+  .mainnamemdiv2p1 {
+    margin-top: 35px;
+  }
+  .ProfileIcon {
+    margin-top: 20px;
+  }
+
+  /* Logged out */
+  .hroutmanagediv1 {
+    padding-left: 20px;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .hrmanagediv1 {
+    padding-left: 20px;
+  }
+
+  /* Logged out */
+  .hroutmanagediv1 {
+    padding-left: 20px;
+  }
+}

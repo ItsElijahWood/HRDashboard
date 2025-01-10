@@ -2,7 +2,7 @@
 $is_invalid = false;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $mysqli = require("../include/hrdata.php");
+    $mysqli = require(__DIR__ . "/../include/hrdata.php");
 
     // Prepare the SQL query
     $sql = sprintf("SELECT * FROM users WHERE email = '%s'",
