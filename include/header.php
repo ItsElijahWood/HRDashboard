@@ -34,5 +34,5 @@
     </div>
   </div>
 </div>
-<script type="module" src="<?php echo $fullpath['base_url']; ?> /assets/js/updateTime.js"></script>
-<script src="<?php echo $fullpath['base_url']; ?> /assets/js/profileOpen.js"></script>
+<script type="module" src="<?php echo $fullpath['base_url']; ?>/assets/js/updateTime.js"></script>
+<script src="<?php echo $fullpath['base_url']; ?>/assets/js/profileOpen.js"></script>

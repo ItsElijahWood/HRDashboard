@@ -31,6 +31,9 @@ body {
   #time {
     display: none;
   }
+  .headerLogo {
+    padding-left: 0;
+  }
 }
 .Menu {
   display: flex;
