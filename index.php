@@ -7,6 +7,7 @@
 
   $totalCountEmployees = fetchTotalCount('Employee ID');
   $averageSalary = fetchAverageSalary('Annual Salary');
+  $pageButtonTitle = "Homepage";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,22 +20,9 @@
 </head>
 <body>
   <?php include(__DIR__ . "/./include/header.php"); ?>
+  <?php include(__DIR__ . "/./include/buttonHeader.php"); ?>
 
   <?php if (isset($user)): ?>
-    <div class="hrmanagemdiv">
-      <div class="hrmanagediv1">
-        <p class="hrmanagediv1p1">
-          Home | 
-        </p>
-      </div>
-      <div class="hrmanagediv2">
-        <a 
-        class="hrmanagediv2a1" 
-        onclick="window.location.href='<?php echo $fullpath['base_url']; ?>/public/manage';" class="button1">Manage
-        </a>
-      </div>
-        <!-- $fullpath from header.php -->
-    </div> 
     <div class="hremployeedashboard1">
     <h2 class="hremployeedashboard1h2">HR Employee Overview</h2>
     <div class="background-blur"></div>
@@ -80,19 +68,6 @@
       </div>
     </div>
   <?php else: ?>
-    <div class="hroutmdiv">
-      <div class="hroutmanagediv1">
-        <p class="hroutmanagediv1p1">
-          Logged Out | 
-        </p>
-      </div>
-      <div class="hroutmanagediv2">
-        <a 
-        class="hroutmanagediv2a1" 
-        onclick="window.location.href='<?php echo $fullpath['base_url']; ?>/public/login';" class="button1">Login
-        </a>
-      </div>
-    </div> 
   <?php endif; ?>
 </body>
 </html>

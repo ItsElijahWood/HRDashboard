@@ -1,5 +1,7 @@
 <?php
   include(__DIR__ . "/../include/session.php");
+
+  $pageButtonTitle = "HR Login";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,22 +14,10 @@
 </head>
 <body>
   <?php include(__DIR__ . "/../include/header.php"); ?> 
+  <?php include(__DIR__ . "/../include/buttonHeader.php"); ?> 
 
   <?php if (isset($user)): ?>
   <?php else: ?>
-    <div class="hroutmdiv">
-      <div class="hroutmanagediv1">
-        <p class="hroutmanagediv1p1">
-          Back | 
-        </p>
-      </div>
-      <div class="hroutmanagediv2">
-        <a 
-          class="hroutmanagediv2a1" 
-          onclick="window.location.href='<?php echo $fullpath['base_url']; ?>';" class="button1">Home
-        </a>
-      </div>
-    </div> 
     <h1 class="h1l">Log in</h1>
     <form action="../controllers/login_form.php" method="POST">
       <input 

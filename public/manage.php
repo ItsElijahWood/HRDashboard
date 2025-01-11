@@ -2,6 +2,8 @@
   include(__DIR__ . "/../include/session.php");
   include(__DIR__ . "/../controllers/data_fetch_employee.php");
   include(__DIR__ . "/../include/renderEmployeeDivs.php");
+
+  $pageButtonTitle = "Manage"
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,22 +16,9 @@
 </head>
 <body>
     <?php include(__DIR__ . "/../include/header.php"); ?>
+    <?php include(__DIR__ . "/../include/buttonHeader.php"); ?>
 
     <?php if (isset($user)): ?>
-        <div class="hroutmdiv">
-            <div class="hroutmanagediv1">
-                <p class="hroutmanagediv1p1">
-                    Manage | 
-                </p>
-            </div>
-            <div class="hroutmanagediv2">
-                <a 
-                    class="hroutmanagediv2a1" 
-                    onclick="window.location.href='<?php echo $fullpath['base_url']; ?>';" class="button1">Home
-                </a>
-            </div>
-        <!-- $fullpath from header.php -->
-        </div> 
         <div class="dataSelector">
             <a class="myemployeebtn" onclick="highlightBtn(this); loadMyEmployees()">My Employees</a>
             <a class="recruitmentbtn" onclick="highlightBtn(this); clearEmployee()">Recruitment</a>
@@ -39,19 +28,6 @@
         <div class="employee-data" id="employeeDataContainer">
         </div>
     <?php else: ?>
-        <div class="hroutmdiv">
-            <div class="hroutmanagediv1">
-                <p class="hroutmanagediv1p1">
-                    Logged Out | 
-                </p>
-            </div>
-            <div class="hroutmanagediv2">
-                <a 
-                    class="hroutmanagediv2a1" 
-                    onclick="window.location.href='<?php echo $fullpath['base_url']; ?>/public/login';" class="button1">Login
-                </a>
-            </div>
-        </div> 
     <?php endif; ?>
     <script>
         function highlightBtn(elm) {
