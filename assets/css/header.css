@@ -11,7 +11,7 @@ body {
   align-items: center;
 }
 .headerLogo {
-  width: 75px;
+  width: 250px;
   padding-left: 1.75rem;
 }
 .headerText {
@@ -21,18 +21,25 @@ body {
 }
 .headerProfileIcon {
   width: 50px;
-  margin-left: auto;
   margin-right: 5px;
 }
 #time {
   font-size: 20px;
+  margin-left: auto;
 }
 @media (max-width: 480px) {
+  #pt {
+    display: none;
+  }
+  .headerProfileIcon {
+    margin-left: auto;
+  }
   #time {
     display: none;
   }
   .headerLogo {
     padding-left: 0;
+    width: 200px;
   }
 }
 .Menu {
@@ -41,7 +48,6 @@ body {
   justify-content: center;
   align-items: center;
   width: 80px;
-  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
 .MenuDiv {

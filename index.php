@@ -14,7 +14,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Homepage</title>
-  <link rel="icon" href="./assets/img/logo.png" type="image/png">
+  <link rel="icon" href="./assets/img/favicon.png" type="image/png">
   <link rel="stylesheet" href="./assets/css/index.css" />
 </head>
 <body>
@@ -36,7 +36,8 @@
         <!-- $fullpath from header.php -->
     </div> 
     <div class="hremployeedashboard1">
-      <h2 class="hremployeedashboard1h2">HR Employee Overview</h2>
+    <h2 class="hremployeedashboard1h2">HR Employee Overview</h2>
+    <div class="background-blur"></div>
       <div class="hremployeedashboardmdiv">
         <div class="hremployeediv4">
           <p class="hremployeediv3p1">Department Percentage</p>

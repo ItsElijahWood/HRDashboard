@@ -9,17 +9,12 @@
 ?>
 <link rel="stylesheet" href="<?php echo $fullpath['base_url']; ?>/assets/css/header.css" />
 <div class="header">
-  <img class="headerLogo" src="<?php echo $fullpath['base_url']; ?>/assets/img/logo.png"/>
+  <img class="headerLogo" src="<?php echo $fullpath['base_url']; ?>/assets/img/headerlogo.png"/>
   <p class="headerText">
-    <?php echo isset($pageTitle) ? htmlspecialchars($pageTitle) : "People Node" ?>
+    <?php echo isset($pageTitle) ? htmlspecialchars($pageTitle) : "" ?>
   </p>
-  <p id="time">| <?php echo $time; ?></p>
-  <img 
-    class="headerProfileIcon" 
-    src="<?php echo $fullpath['base_url']; ?>/assets/img/profilelogo.png" 
-    onclick="toggleProfile()"
-    alt="Profile Icon"
-  />
+  <p id="time"><?php echo $time; ?></p>
+  <p id="pt">&nbsp;|&nbsp;</p>
   <div style="display: none;" class="Menu" id="Menu">
     <div class="MenuDiv">
 
@@ -32,6 +27,12 @@
 
     </div>
   </div>
+  <img 
+    class="headerProfileIcon" 
+    src="<?php echo $fullpath['base_url']; ?>/assets/img/profilelogo.png" 
+    onclick="toggleProfile()"
+    alt="Profile Icon"
+  /> 
 </div>
 <script type="module" src="<?php echo $fullpath['base_url']; ?>/assets/js/updateTime.js"></script>
 <script src="<?php echo $fullpath['base_url']; ?>/assets/js/profileOpen.js"></script>
