@@ -4,8 +4,7 @@
 
   $query = isset($_GET['query']) ? $_GET['query'] : ''; 
 
-  function searchEmployeeData($tableName = 'data', $searchQuery = '') {
-      global $conn;
+  function searchEmployeeData($conn, $tableName = 'data', $searchQuery = '') {
 
       $sql = "SELECT * FROM $tableName WHERE CONCAT_WS(' ', `Full Name`, `Job Title`, `Department`) LIKE '%$searchQuery%'";
 
@@ -24,7 +23,7 @@
   }
 
   // Fetch data with the search query.
-  $employeeData = searchEmployeeData('data', $query);
+  $employeeData = searchEmployeeData($conn, 'data', $query);
 
   renderDivs($employeeData, ['Full Name', 'Job Title', 'Department']);
 ?>

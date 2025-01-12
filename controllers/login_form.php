@@ -1,18 +1,22 @@
 <?php
-$is_invalid = false;
+namespace HRDashboard\Controller;
 
+require_once(__DIR__ . '/../include/hrdata.php');
+
+$is_invalid = false;
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $mysqli = require(__DIR__ . "/../include/hrdata.php");
+    $connConfig = new \HRDashboard\Include\ConnConfig;
+    $conn = $connConfig->getConnection();
 
     // Prepare the SQL query
     $sql = sprintf("SELECT * FROM users WHERE email = '%s'",
-        $mysqli->real_escape_string($_POST["email"])
+        $conn->real_escape_string($_POST["email"])
     );
 
     // Execute the SQL query
-    $result = $mysqli->query($sql);
+    $result = $conn->query($sql);
     if (!$result) {
-        die("Query Error: " . $mysqli->error);
+        die("Query Error: " . $conn->error);
     }
 
     // Fetch the user data
@@ -26,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             session_regenerate_id();
             $_SESSION["user_id"] = $user["id"];
 
-            header("Location: ../index");
+            header("Location: ../");
             exit;
         } else {
             echo "Password verification failed.";

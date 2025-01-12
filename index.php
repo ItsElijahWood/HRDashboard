@@ -1,31 +1,42 @@
 <?php
-  include(__DIR__ . "/./include/session.php");
-  include(__DIR__ . "/./controllers/data_fetch_counter.php");
-  include(__DIR__ . "/./controllers/data_fetch_salary.php");
-  include(__DIR__ . "/./controllers/data_fetch_country.php");
-  include(__DIR__ . "/./controllers/data_fetch_department.php");
+namespace HRDashboard;
 
-  $totalCountEmployees = fetchTotalCount('Employee ID');
-  $averageSalary = fetchAverageSalary('Annual Salary');
-  $pageButtonTitle = "Homepage";
+require_once(__DIR__ . "/include/session.php");
+include(__DIR__ . "/./controllers/data_fetch_counter.php");
+include(__DIR__ . "/./controllers/data_fetch_salary.php");
+include(__DIR__ . "/./controllers/data_fetch_country.php");
+include(__DIR__ . "/./controllers/data_fetch_department.php");
+
+$userSession = new \HRDashboard\Include\UserSession();
+
+// Check if the user is authenticated
+if ($userSession->isAuthenticated()) {
+    $user = $userSession->getUser(); 
+    $totalCountEmployees = fetchTotalCount($conn, 'Employee ID');
+    $averageSalary = fetchAverageSalary($conn, 'Annual Salary');
+    $pageButtonTitle = "Homepage";
+} else {
+    $user = null;
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homepage</title>
+  <title><?php echo htmlspecialchars($pageButtonTitle); ?></title>
   <link rel="icon" href="./assets/img/favicon.png" type="image/png">
   <link rel="stylesheet" href="./assets/css/index.css" />
 </head>
 <body>
-  <?php include(__DIR__ . "/./include/header.php"); ?>
-  <?php include(__DIR__ . "/./include/buttonHeader.php"); ?>
+  <?php include(__DIR__ . "/include/header.php"); ?>
+  <?php include(__DIR__ . "/include/buttonHeader.php"); ?>
 
-  <?php if (isset($user)): ?>
+  <?php if ($user): ?>
     <div class="hremployeedashboard1">
-    <h2 class="hremployeedashboard1h2">HR Employee Overview</h2>
-    <div class="background-blur"></div>
+      <h2 class="hremployeedashboard1h2">HR Employee Overview</h2>
+      <div class="background-blur"></div>
       <div class="hremployeedashboardmdiv">
         <div class="hremployeediv4">
           <p class="hremployeediv3p1">Department Percentage</p>
@@ -34,7 +45,7 @@
               if (!empty($departmentPercentages)) {
                 foreach ($departmentPercentages as $department => $percentage) {
                   echo "<p class='department-entry'>" . htmlspecialchars($department) . ": " . htmlspecialchars($percentage) . "%</p>";
-              }
+                }
               } else {
                 echo "<p>No department data available.</p>";
               }
@@ -47,7 +58,7 @@
             <p class="hremployeediv1p2"><?php echo htmlspecialchars($totalCountEmployees); ?></p> 
           </div>
           <div class="hremployeediv3">
-          <p class="hremployeediv3p1">Country Percentage</p>
+            <p class="hremployeediv3p1">Country Percentage</p>
             <div class="country-percentages">
               <?php
                 if (!empty($countryPercentages)) {

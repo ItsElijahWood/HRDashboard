@@ -1,5 +1,5 @@
 <?php
-  include(__DIR__ . "/../include/session.php");
+  include_once(__DIR__ . "/../include/session.php");
 
   $pageButtonTitle = "HR Login";
 ?>

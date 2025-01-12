@@ -1,18 +1,33 @@
 <?php
-  $config = require(__DIR__ . "/../config/config.php");
+namespace HRDashboard\Include;
 
-  // Require database creds from config.php.
-  $dbHost = $config['dbHost'];
-  $dbUser = $config['dbUser'];
-  $dbPass = $config['dbPass'];
-  $servername = $config['hrdataDb'];
+class ConnConfig {
+  private $conn;
 
-  // Executes db cred.
-  $conn = new mysqli($dbHost, $dbUser, $dbPass, $servername);
+  public function __construct() {
+    $config = require(__DIR__ . "/../config/config.php");
 
-  if ($conn->connect_error) {
-    die("Conn failed: " . $conn->connect_error);
-  } 
+    $dbHost = $config['dbHost'];
+    $dbUser = $config['dbUser'];
+    $dbPass = $config['dbPass'];
+    $servername = $config['hrdataDb'];
 
-  return $conn;
+    // Executes db credentials.
+    $this->conn = new \mysqli($dbHost, $dbUser, $dbPass, $servername);
+
+    if ($this->conn->connect_error) {
+      die("Connection failed: " . $this->conn->connect_error);
+    }
+  }
+
+  public function getConnection() {
+    return $this->conn;
+  }
+
+  public function closeConnection() {
+    if ($this->conn) {
+      $this->conn->close();
+    }
+  }
+}
 ?>

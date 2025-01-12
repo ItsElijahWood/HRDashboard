@@ -1,6 +1,6 @@
 Only a testing file not to be used in production
 <?php
-  $mysqli = require __DIR__ . "/../include/hrdata.php";
+  $mysqli = require_once __DIR__ . "/../include/hrdata.php";
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = mysqli_real_escape_string($mysqli, $_POST['user']);

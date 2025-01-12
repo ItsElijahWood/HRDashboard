@@ -1,30 +1,52 @@
 <?php
-  if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-  }
+namespace HRDashboard\Include;
 
-  // Check if a session id is set.
-  if (isset($_SESSION["user_id"])) {
-     $mysqli = require("hrdata.php");
+class UserSession {
+    public $user;
+    private $connConfig;
 
-     $sql = "SELECT * FROM users WHERE id = ?";
-     $stmt = $mysqli->prepare($sql);
-     
-     // Bind session id (integer) to ? in $sql.
-     $stmt->bind_param("i", $_SESSION["user_id"]);
-     
-     $stmt->execute();
-     
-     $result = $stmt->get_result();
-     
-     // If returned more than 0 rows than fetchs first row into $user,
-     // If not than set null.
-     if ($result->num_rows > 0) {
-         $user = $result->fetch_assoc();
-     } else {
-         $user = null;
-     }
-     
-     $stmt->close();
-  }
+    public function __construct() {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $this->connConfig = new ConnConfig();
+        $conn = $this->connConfig->getConnection(); 
+
+        // Check if a session ID exists for the user
+        if (isset($_SESSION["user_id"])) {
+            $this->user = $this->getUserById($_SESSION["user_id"], $conn);
+        } else {
+            $this->user = null;
+        }
+    }
+
+    // Fetch user data by user ID
+    private function getUserById($userId, $conn) {
+        $sql = "SELECT * FROM users WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+
+        if (!$stmt) {
+            die("SQL preparation failed: " . $conn->error);
+        }
+
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        }
+
+        return null;
+    }
+
+    public function isAuthenticated() {
+        return $this->user !== null;
+    }
+
+    public function getUser() {
+        return $this->user;
+    }
+}
 ?>

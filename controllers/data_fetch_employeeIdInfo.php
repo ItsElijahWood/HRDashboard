@@ -1,10 +1,13 @@
 <?php
-  require(__DIR__ . '/../include/hrdata.php');
+  require_once(__DIR__ . '/../include/hrdata.php');
+
+  $connConfig = new \HRDashboard\Include\ConnConfig;
+  $conn = $connConfig->getConnection();
 
   if (isset($_GET['id'])) {
       $employeeId = htmlspecialchars($_GET['id']); 
 
-      $employeeData = fetchEmployeeDataById($employeeId); 
+      $employeeData = fetchEmployeeDataById($conn, $employeeId); 
 
       if (!$employeeData) {
           echo "Employee not found."; 
@@ -15,8 +18,7 @@
       exit;
   }
 
-  function fetchEmployeeDataById($employeeId) {
-      global $conn; 
+  function fetchEmployeeDataById($conn, $employeeId) {
 
       // Prepare the SQL query to fetch the employee data by Employee ID.
       $stmt = $conn->prepare("SELECT * FROM data WHERE `Employee ID` = ?");

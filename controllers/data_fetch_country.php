@@ -1,8 +1,10 @@
 <?php
-    require(__DIR__ . '/../include/hrdata.php');
+    require_once(__DIR__ . '/../include/hrdata.php');
 
-    function fetchCountryData($columnNameCY, $tableName = 'data') {
-        global $conn;
+    $connConfig = new \HRDashboard\Include\ConnConfig;
+    $conn = $connConfig->getConnection();
+
+    function fetchCountryData($conn, $columnNameCY, $tableName = 'data') {
 
         $columnNameCY = trim($columnNameCY);
 
@@ -43,7 +45,7 @@
     }
 
     $columnNameCY = 'Country'; 
-    $countryData = fetchCountryData($columnNameCY);
+    $countryData = fetchCountryData($conn, $columnNameCY);
   
     if (!empty($countryData)) {
         $countryPercentages = calculateCountryPercentages($countryData);

@@ -2,7 +2,7 @@
   // Loads configs
   $fullpath = include(__DIR__ . '../../config/config.php');
 
-  include("session.php");
+  include_once("session.php");
 
   date_default_timezone_set('Europe/London');
   $time = date("H:i");

@@ -1,9 +1,10 @@
 <?php
-  require(__DIR__ . '/../include/hrdata.php');
+  require_once(__DIR__ . '/../include/hrdata.php');
 
-  function fetchAverageSalary($columnNameAS, $tableName = 'data') {
-      global $conn;
+  $connConfig = new \HRDashboard\Include\ConnConfig;
+  $conn = $connConfig->getConnection();
 
+  function fetchAverageSalary($conn, $columnNameAS, $tableName = 'data') {
       $columnNameAS = "`" . str_replace("`", "``", $columnNameAS) . "`";
       $tableName = "`" . str_replace("`", "``", $tableName) . "`";
 
@@ -22,5 +23,5 @@
   }
 
   $columnNameAS = 'Annual Salary';
-  $averageSalary = fetchAverageSalary($columnNameAS);
+  $averageSalary = fetchAverageSalary($conn, $columnNameAS);
 ?>

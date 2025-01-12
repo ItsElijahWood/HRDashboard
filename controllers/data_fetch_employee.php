@@ -1,8 +1,10 @@
 <?php
-    include('../include/hrdata.php');
+    include_once('../include/hrdata.php');
 
-    function fetchEmployeeData($tableName = 'data') {
-        global $conn;
+    $connConfig = new \HRDashboard\Include\ConnConfig;
+    $conn = $connConfig->getConnection();
+
+    function fetchEmployeeData($conn, $tableName = 'data') {
 
         $sql = "SELECT * FROM $tableName"; 
 

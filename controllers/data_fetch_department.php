@@ -1,8 +1,10 @@
 <?php
-  require(__DIR__ . '/../include/hrdata.php');
+  require_once(__DIR__ . '/../include/hrdata.php');
 
-  function fetchDepartmentData($columnNameDT, $tableName = 'data') {
-    global $conn;
+  $connConfig = new \HRDashboard\Include\ConnConfig;
+  $conn = $connConfig->getConnection();
+
+  function fetchDepartmentData($conn, $columnNameDT, $tableName = 'data') {
 
     $columnNameDT = trim($columnNameDT);
 
@@ -43,7 +45,7 @@
   }
 
   $columnNameDT = 'Department'; 
-  $departmentData = fetchDepartmentData($columnNameDT);
+  $departmentData = fetchDepartmentData($conn, $columnNameDT);
 
   if (!empty($departmentData)) {
     $departmentPercentages = calculateDepartmentPercentages($departmentData);

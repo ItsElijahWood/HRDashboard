@@ -1,9 +1,16 @@
 <?php
-  include(__DIR__ . "/../include/session.php");
+  include_once(__DIR__ . "/../include/session.php");
   include(__DIR__ . "/../controllers/data_fetch_employee.php");
   include(__DIR__ . "/../include/renderEmployeeDivs.php");
 
-  $pageButtonTitle = "Manage"
+  $userSession = new \HRDashboard\Include\UserSession;
+
+  if ($userSession->isAuthenticated()) {
+    $user = $userSession->getUser();
+    $pageButtonTitle = "Manage";
+  } else {
+    $user = null;
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
