@@ -9,7 +9,7 @@
 ?>
 <link rel="stylesheet" href="<?php echo $fullpath['base_url']; ?>/assets/css/header.css" />
 <div class="header">
-  <img class="headerLogo" src="<?php echo $fullpath['base_url']; ?>/assets/img/headerlogo.png"/>
+  <img class="headerLogo" onclick="window.location.href='<?php echo $fullpath['base_url']; ?>'" src="<?php echo $fullpath['base_url']; ?>/assets/img/headerlogo.png"/>
   <p class="headerText">
     <?php echo isset($pageTitle) ? htmlspecialchars($pageTitle) : "" ?>
   </p>

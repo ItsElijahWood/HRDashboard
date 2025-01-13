@@ -27,12 +27,35 @@
 
     <?php if (isset($user)): ?>
         <div class="dataSelector">
-            <a class="myemployeebtn" onclick="highlightBtn(this); loadMyEmployees()">My Employees</a>
+            <a class="myemployeebtn" onclick="highlightBtn(this); loadMyEmployees()">My People</a>
             <a class="recruitmentbtn" onclick="highlightBtn(this); clearEmployee()">Recruitment</a>
             <a class="managetimebtn" onclick="highlightBtn(this); clearEmployee();">Manage Time</a>
         </div>
-        <input style="display: none;" type="text" id="searchBar" oninput="searchEmployees()" placeholder="Search Employees..." />
-        <div class="employee-data" id="employeeDataContainer">
+        <div class="search">
+            <input type="text" id="searchBar" oninput="searchEmployees()" placeholder="Search Employees..." />
+        </div>
+        <div class="mgroup">
+            <div class="group1">
+                <div id="leftsidebar1" class="leftsidebar1">
+                    <div class="lsb1d">
+                        <a class="ap" onclick="window.location.href='<?php echo $fulldir['base_url']; ?>/public/panel/adduser'">Add Person</a>
+                    </div>
+                    <div class="lsb1d4">
+                        <a class="bl" onclick="">Add Job Title</a>
+                    </div>
+                    <div class="lsb1d5">
+                        <a class="bl" onclick="">Add Department</a>
+                    </div>
+                    <div class="lsb1d2">
+                        <a class="bs" onclick="">Browse Starters</a>
+                    </div>
+                    <div class="lsb1d3">
+                        <a class="bl" onclick="">Browse Leavers</a>
+                    </div>
+                </div>
+            </div>
+            <div class="employee-data" id="employeeDataContainer">
+            </div>
         </div>
     <?php else: ?>
     <?php endif; ?>
@@ -45,11 +68,23 @@
 
         function loadMyEmployees() {
             const search = document.getElementById("searchBar");
+            const leftsidebar1 = document.getElementById("leftsidebar1");
+
+            if (search.style.display === "flex") {
+                return;
+            }
 
             search.style.display =
                 search.style.display === 'none' || search.style.display === ""
-                ? "block"
+                ? "flex"
                 : "none";
+
+            if (window.innerWidth >= 480) {
+                leftsidebar1.style.display =
+                    leftsidebar1.style.display === 'none' || leftsidebar1.style.display === ""
+                    ? "block"
+                    : "none";
+            }
 
             fetch("../controllers/getEmployeeData.php")
                 .then((response) => response.text())
@@ -62,11 +97,20 @@
 
         function clearEmployee() {
             const search = document.getElementById("searchBar");
+            const leftsidebar1 = document.getElementById("leftsidebar1");
 
             search.style.display =
                 search.style.display === 'none' || search.style.display === ""
-                ? "block"
+                ? "none"
                 : "none";
+
+            if (window.innerWidth >= 480) {
+                leftsidebar1.style.display =
+                    leftsidebar1.style.display === '' || leftsidebar1.style.display === ""
+                        ? "none"
+                        : "none";
+            }
+ 
 
             document.getElementById('employeeDataContainer').innerHTML = '';
         }

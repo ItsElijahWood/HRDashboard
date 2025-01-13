@@ -1,6 +1,8 @@
 <?php
 namespace HRDashboard\Include;
 
+require_once __DIR__ . '/./hrdata.php';
+
 class UserSession {
     public $user;
     private $connConfig;

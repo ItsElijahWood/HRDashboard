@@ -15,6 +15,7 @@
   color: black;
   text-decoration: none;
   font-size: 22px;
+  cursor: pointer;
 }
 @media (max-width: 480px) {
   .myemployeebtn,
@@ -24,6 +25,15 @@
   }
   .dataSelector {
     display: block;
+  }
+  .leftsidebar1 {
+    display: none;
+  }
+  .leftsidebar1 {
+    width: 140px;
+  }
+  input[type="text"] {
+    width: 100% !important;
   }
 }
 @media (min-width: 600px) and (max-width: 900px) {
@@ -51,12 +61,22 @@ label {
   display: block;
 }
 input[type="text"] {
-  width: 100%;
+  display: none;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
+  width: 350px;
+}
+.mgroup {
+  display: flex;
+  justify-content: center;
+}
+.search {
+  justify-content: right;
+  margin-top: 12px;
+  display: flex;
 }
 .buttonForm {
   width: 100%;
@@ -83,28 +103,66 @@ input[type="text"] {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
 }
-
 .employee-row {
   display: flex;
-  flex-wrap: wrap;
+  cursor: pointer;
+  justify-content: center;
   width: 100%;
-  margin-bottom: 10px;
 }
-
+.employee-row:hover {
+  background-color: orange;
+}
+.employee-row.header-column:hover {
+  background-color: #e0e0e0;
+}
 .header-row {
   font-weight: bold;
   background-color: #f0f0f0;
+  cursor: default;
+  width: 100%;
 }
-
+.group1 {
+  display: flex;
+}
 .employee-column {
-  width: 150px;
+  width: 100%;
   padding: 5px;
   border: 1px solid #ccc;
   text-align: center;
+  font-family: sans-serif;
 }
-
 .header-column {
   background-color: #e0e0e0;
   font-weight: bold;
+}
+.leftsidebar1 {
+  display: none;
+  border-radius: 5px;
+  border: 1px solid rgb(204 204 204);
+  background-color: rgb(66 140 226);
+  height: 200px;
+  width: 300px;
+}
+.bl,
+.bs,
+.ap {
+  color: white;
+  font-family: sans-serif;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.lsb1d5,
+.lsb1d4,
+.lsb1d3,
+.lsb1d2,
+.lsb1d {
+  text-align: left;
+  margin-bottom: 0.1px;
+  border: 1.5px solid rgb(204 204 204);
+  padding: 5px;
 }
