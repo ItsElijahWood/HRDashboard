@@ -1,5 +1,5 @@
 <?php
-  require_once(__DIR__ . '/../include/hrdata.php');
+  require_once(__DIR__ . '/../../include/database/hrdata.php');
 
   $connConfig = new \HRDashboard\Include\ConnConfig;
   $conn = $connConfig->getConnection();
@@ -28,21 +28,28 @@
   // Calculate percentage of each department.
   function calculateDepartmentPercentages($departmentData) {
     $totalCount = count($departmentData);
+    
+    // Filter the department data to keep only strings or integers.
+    $departmentData = array_filter($departmentData, function($value) {
+        return is_string($value) || is_int($value);
+    });
+
     $departmentCounts = array_count_values($departmentData);
     $departmentPercentages = [];
 
     foreach ($departmentCounts as $department => $count) {
-      if (empty($department) || !is_string($department)) {
-        continue;
-      }
+        if (empty($department) || !is_string($department)) {
+            continue;
+        }
 
-      $percentage = ($count / $totalCount) * 100;
-      // Round to 2 decimal places.
-      $departmentPercentages[$department] = round($percentage, 2);
+        $percentage = ($count / $totalCount) * 100;
+        // Round to 2 decimal places.
+        $departmentPercentages[$department] = round($percentage, 2);
     }
 
-      return $departmentPercentages;
-  }
+    return $departmentPercentages;
+}
+
 
   $columnNameDT = 'Department'; 
   $departmentData = fetchDepartmentData($conn, $columnNameDT);

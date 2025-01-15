@@ -1,5 +1,5 @@
 <?php
-    require_once(__DIR__ . '/../include/hrdata.php');
+    require_once(__DIR__ . '/../../include/database/hrdata.php');
 
     $connConfig = new \HRDashboard\Include\ConnConfig;
     $conn = $connConfig->getConnection();
@@ -28,21 +28,28 @@
     // Calculate percentage of each country.
     function calculateCountryPercentages($countryData) {
         $totalCount = count($countryData);
+        
+        // Filter the country data to keep only strings or integers.
+        $countryData = array_filter($countryData, function($value) {
+            return is_string($value) || is_int($value);
+        });
+    
         $countryCounts = array_count_values($countryData);
         $countryPercentages = [];
-
+    
         foreach ($countryCounts as $country => $count) {
             if (empty($country) || !is_string($country)) {
                 continue;
             }
-
+    
             $percentage = ($count / $totalCount) * 100;
             // Round to 2 decimal places.
             $countryPercentages[$country] = round($percentage, 2);       
         }
-
-      return $countryPercentages;
+    
+        return $countryPercentages;
     }
+    
 
     $columnNameCY = 'Country'; 
     $countryData = fetchCountryData($conn, $columnNameCY);

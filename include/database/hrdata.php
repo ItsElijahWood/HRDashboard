@@ -5,7 +5,7 @@ class ConnConfig {
   private $conn;
 
   public function __construct() {
-    $config = require(__DIR__ . "/../config/config.php");
+    $config = require(__DIR__ . "/../../config/config.php");
 
     $dbHost = $config['dbHost'];
     $dbUser = $config['dbUser'];

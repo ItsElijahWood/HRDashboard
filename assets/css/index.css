@@ -97,9 +97,10 @@
 .hremployeediv1 {
   width: 230px;
   background-color: #ffffff;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   border-radius: 2px 2px;
-  border: 1.2px solid #e2e2e2;
+  border: 2px solid #e2e2e2;
   margin-bottom: 15px;
   height: 110px;
 }
@@ -108,15 +109,17 @@
   background-color: #ffffff;
   text-align: center;
   border-radius: 2px 2px;
-  border: 1.2px solid #e2e2e2;
+  border: 3px solid #e2e2e2;
   height: 220px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 .hremployeediv4 {
   width: 230px;
   background-color: #ffffff;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   border-radius: 2px 2px;
-  border: 1.2px solid #e2e2e2;
+  border: 3px solid #e2e2e2;
 }
 .hremployeediv3p1,
 .hremployeediv2p1,
@@ -152,7 +155,7 @@
     background-color: #ffffff;
     text-align: center;
     border-radius: 2px 2px;
-    border: 1.2px solid #e2e2e2;
+    border: 3px solid #e2e2e2;
   }
   .hremployeedashboard1 {
     padding-left: 0;
@@ -173,8 +176,8 @@
   background-image: url("../img/icon-separator.png");
   background-size: 40% auto;
   background-position: center;
-  filter: blur(2px);
-  filter: opacity(20%);
+  filter: blur(10px);
+  filter: opacity(7%);
   z-index: 1;
 }
 .hremployeedashboard1 {

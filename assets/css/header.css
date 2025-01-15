@@ -4,11 +4,13 @@ body {
 }
 .header {
   width: auto;
-  background-color: rgba(0, 0, 255, 0.782);
+  background: linear-gradient(90deg, #0a5cba, #0f5089);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   padding: 20px;
   color: white;
   display: flex;
   align-items: center;
+  height: 100px;
 }
 .headerLogo {
   width: 250px;
@@ -20,38 +22,128 @@ body {
   font-size: 25px;
 }
 .headerProfileIcon {
-  width: 50px;
-  margin-right: 5px;
+  width: 70px;
+  cursor: pointer;
 }
-#time {
-  font-size: 20px;
-  margin-left: auto;
+.divProfileLogo {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+}
+.button1 {
+  text-align: center;
+  background-color: #428ce2;
+  width: 200px;
+  padding: 15px;
+  display: flex;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+}
+.buttonmain {
+  text-align: center;
+  background-color: #428ce2;
+  width: 200px;
+  padding: 12px;
+  display: flex;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+}
+.groupImgAndA {
+  border-radius: 5px;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  cursor: pointer;
+  height: 35px;
+  background-color: #428ce2;
+}
+.groupImgAndA:hover {
+  background-color: #0c3f8a;
+  .button1,
+  .buttonmain {
+    cursor: pointer;
+    background-color: #0c3f8a;
+  }
+}
+.logOutImg {
+  width: 38px;
+  height: 38px;
+}
+.logInImg,
+.settingsImg,
+.profileImg,
+.adminImg {
+  width: 35px;
+  height: 35px;
+}
+.MenuLOUT {
+  z-index: 1000;
+  right: 1%;
+  top: 115px;
+  border-radius: 10px;
+  border: 2px solid rgb(11, 74, 163);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  background-color: #428ce2;
+  width: 300px;
+  position: absolute;
 }
 @media (max-width: 480px) {
-  #pt {
-    display: none;
-  }
   .headerProfileIcon {
     margin-left: auto;
   }
-  #time {
-    display: none;
-  }
   .headerLogo {
     padding-left: 0;
-    width: 200px;
+    width: 240px;
+  }
+  .Menu {
+    width: 113px !important;
+    right: 0 !important;
+  }
+  .MenuLOUT {
+    width: 55px !important;
+    right: 27px !important;
+    height: 56px !important;
+  }
+  .buttonmain,
+  .button1 {
+    display: none;
+  }
+  .MenuDiv {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .settingsImg {
+    width: 38px;
+    height: 38px;
+  }
+  .logInImg:hover {
+    background-color: #428ce2;
+  }
+  .groupImgAndA:hover {
+    background-color: #428ce2;
   }
 }
 .Menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 80px;
   z-index: 1000;
+  right: 1%;
+  top: 115px;
+  border-radius: 10px;
+  border: 2px solid rgb(11, 74, 163);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  background-color: #428ce2;
+  width: 300px;
+  position: absolute;
 }
+
 .MenuDiv {
-  text-align: center;
+  width: 100%;
+  height: 100%;
 }
 @media (min-width: 600px) and (max-width: 900px) {
   .headerLogo {

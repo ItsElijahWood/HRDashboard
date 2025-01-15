@@ -1,5 +1,5 @@
 <?php
-$fulldir = require(__DIR__ . '/../config/config.php');
+$fulldir = require(__DIR__ . '/../../config/config.php');
 
 function renderDivs($data, $fields) {
     global $fulldir; 

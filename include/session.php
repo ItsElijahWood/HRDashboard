@@ -1,7 +1,7 @@
 <?php
 namespace HRDashboard\Include;
 
-require_once __DIR__ . '/./hrdata.php';
+require_once __DIR__ . '/./database/hrdata.php';
 
 class UserSession {
     public $user;
@@ -25,7 +25,7 @@ class UserSession {
 
     // Fetch user data by user ID
     private function getUserById($userId, $conn) {
-        $sql = "SELECT * FROM users WHERE id = ?";
+        $sql = "SELECT * FROM users WHERE ID = ?";
         $stmt = $conn->prepare($sql);
 
         if (!$stmt) {

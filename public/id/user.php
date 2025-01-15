@@ -1,7 +1,7 @@
 <?php
   $fulldir = include(__DIR__ . '/../../config/config.php');
   include_once(__DIR__ . '/../../include/session.php');
-  include(__DIR__ . '/../../controllers/data_fetch_employeeIdInfo.php'); 
+  include(__DIR__ . '/../../controllers/data/data_fetch_employeeIdInfo.php'); 
 
   $userSession = new \HRDashboard\Include\UserSession;
 

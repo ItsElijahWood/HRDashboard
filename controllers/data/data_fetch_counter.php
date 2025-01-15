@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/../include/hrdata.php');
+require_once(__DIR__ . '/../../include/database/hrdata.php');
 
 $connConfig = new \HRDashboard\Include\ConnConfig;
 $conn = $connConfig->getConnection();

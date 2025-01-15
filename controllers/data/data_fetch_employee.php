@@ -1,5 +1,5 @@
 <?php
-    include_once('../include/hrdata.php');
+    include_once('../include/database/hrdata.php');
 
     $connConfig = new \HRDashboard\Include\ConnConfig;
     $conn = $connConfig->getConnection();

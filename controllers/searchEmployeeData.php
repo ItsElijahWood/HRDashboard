@@ -22,7 +22,6 @@
       }
   }
 
-  // Fetch data with the search query.
   $employeeData = searchEmployeeData($conn, 'data', $query);
 
   renderDivs($employeeData, ['Full Name', 'Job Title', 'Department']);

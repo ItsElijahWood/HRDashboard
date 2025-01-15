@@ -1,0 +1,76 @@
+.mainnamediv {
+  background-color: #f9f9f9;
+  padding-top: 5px;
+  padding-bottom: 18px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #f9f9f9;
+  border-radius: 10px;
+}
+.mainnamemdiv2p2 {
+  font-size: 17px;
+}
+.mainnamediv2 {
+  padding-left: 2.8rem;
+  background-color: #f9f9f9;
+  height: 100px;
+}
+.mainnamediv3 {
+  padding-left: 1.5rem;
+  background-color: #f9f9f9;
+  padding-bottom: 3px;
+}
+.mainnamediv3p1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+}
+.ProfileIcon {
+  width: 80px;
+  margin-top: 22px;
+}
+.mainnamemdiv {
+  display: flex;
+}
+.mainnamemdiv2 {
+  margin-left: 25px;
+}
+.mainnamemdiv2p1 p {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-size: 17px;
+}
+.mainnamemdiv2p1 {
+  margin-top: 45px;
+}
+.ml {
+  margin-right: 10px;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+@media (max-width: 480px) {
+  .mlu {
+    display: none;
+  }
+  .mainnamemdiv {
+    display: block;
+  }
+  .mainnamediv2 {
+    padding-left: 1rem;
+  }
+  .mainnamemdiv2 {
+    margin-left: 20px;
+  }
+  .hrmanagediv1 {
+    padding-left: 20px;
+  }
+  .mainnamediv3 {
+    padding-left: 13px;
+    text-align: center;
+  }
+  .mainnamemdiv2p1 {
+    margin-top: 35px;
+  }
+  .ProfileIcon {
+    margin-top: 20px;
+  }
+}

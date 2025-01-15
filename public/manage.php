@@ -1,7 +1,7 @@
 <?php
   include_once(__DIR__ . "/../include/session.php");
-  include(__DIR__ . "/../controllers/data_fetch_employee.php");
-  include(__DIR__ . "/../include/renderEmployeeDivs.php");
+  include(__DIR__ . "/../controllers/data/data_fetch_employee.php");
+  include(__DIR__ . "/../include/render/renderEmployeeDivs.php");
 
   $userSession = new \HRDashboard\Include\UserSession;
 
@@ -36,21 +36,22 @@
         </div>
         <div class="mgroup">
             <div class="group1">
-                <div id="leftsidebar1" class="leftsidebar1">
+                <div style="display: none;" id="leftsidebar1" class="leftsidebar1">
+                    <h3 class="lsb1h3">Manage Panel</h3>
+                    <div class="lsb1d" onclick="window.location.href='<?php echo $fulldir['base_url']; ?>/public/panel/addperson'">
+                        <a class="lsp" onclick="window.location.href='<?php echo $fulldir['base_url']; ?>/public/panel/addperson'">Add Person</a>
+                    </div>
                     <div class="lsb1d">
-                        <a class="ap" onclick="window.location.href='<?php echo $fulldir['base_url']; ?>/public/panel/adduser'">Add Person</a>
+                        <a class="lsp" onclick="">Add Job Title</a>
                     </div>
-                    <div class="lsb1d4">
-                        <a class="bl" onclick="">Add Job Title</a>
+                    <div class="lsb1d">
+                        <a class="lsp" onclick="">Add Department</a>
                     </div>
-                    <div class="lsb1d5">
-                        <a class="bl" onclick="">Add Department</a>
+                    <div class="lsb1d">
+                        <a class="lsp" onclick="">Browse Starters</a>
                     </div>
-                    <div class="lsb1d2">
-                        <a class="bs" onclick="">Browse Starters</a>
-                    </div>
-                    <div class="lsb1d3">
-                        <a class="bl" onclick="">Browse Leavers</a>
+                    <div class="lsb1d">
+                        <a class="lsp" onclick="">Browse Leavers</a>
                     </div>
                 </div>
             </div>
@@ -93,7 +94,7 @@
                 document.getElementById("employeeDataContainer").innerHTML = data;
             })
             .catch((error) => console.error("Error fetching employee data:", error));
-        }
+            }
 
         function clearEmployee() {
             const search = document.getElementById("searchBar");

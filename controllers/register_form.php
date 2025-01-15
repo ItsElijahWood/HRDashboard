@@ -1,6 +1,6 @@
 Only a testing file not to be used in production
 <?php
-  $mysqli = require_once __DIR__ . "/../include/hrdata.php";
+  $mysqli = require_once __DIR__ . "/../include/database/hrdata.php";
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = mysqli_real_escape_string($mysqli, $_POST['user']);
@@ -14,7 +14,7 @@ Only a testing file not to be used in production
       exit;
     }
 
-    $sql = "SELECT id FROM users WHERE username = ?";
+    $sql = "SELECT ID FROM users WHERE Username = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param('s', $user);
     $stmt->execute();
@@ -27,9 +27,9 @@ Only a testing file not to be used in production
 
     $hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users (username, password, email, age, sex) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (Username, Password, Email) VALUES (?, ?, ?)";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param('sssis', $user, $hashedPassword, $email, $age, $sex);
+    $stmt->bind_param('sss', $user, $hashedPassword, $email);
     
     if ($stmt->execute()) {
       header("Location: ../index");

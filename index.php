@@ -2,10 +2,10 @@
 namespace HRDashboard;
 
 require_once(__DIR__ . "/include/session.php");
-include(__DIR__ . "/./controllers/data_fetch_counter.php");
-include(__DIR__ . "/./controllers/data_fetch_salary.php");
-include(__DIR__ . "/./controllers/data_fetch_country.php");
-include(__DIR__ . "/./controllers/data_fetch_department.php");
+include(__DIR__ . "/./controllers/data/data_fetch_counter.php");
+include(__DIR__ . "/./controllers/data/data_fetch_salary.php");
+include(__DIR__ . "/./controllers/data/data_fetch_country.php");
+include(__DIR__ . "/./controllers/data/data_fetch_department.php");
 
 $userSession = new \HRDashboard\Include\UserSession();
 
@@ -14,6 +14,7 @@ if ($userSession->isAuthenticated()) {
     $user = $userSession->getUser(); 
     $totalCountEmployees = fetchTotalCount($conn, 'Employee ID');
     $averageSalary = fetchAverageSalary($conn, 'Annual Salary');
+    
     $pageButtonTitle = "Homepage";
 } else {
     $user = null;
@@ -35,7 +36,7 @@ if ($userSession->isAuthenticated()) {
 
   <?php if ($user): ?>
     <div class="hremployeedashboard1">
-      <h2 class="hremployeedashboard1h2">HR Employee Overview</h2>
+      <h2 class="hremployeedashboard1h2">Staff Overview</h2>
       <div class="background-blur"></div>
       <div class="hremployeedashboardmdiv">
         <div class="hremployeediv4">

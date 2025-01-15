@@ -1,0 +1,128 @@
+.totalUCD {
+  background-color: #ffffff;
+  text-align: center;
+  border-radius: 2px 2px;
+  border: 1.2px solid #e2e2e2;
+  width: 230px;
+  height: 110px;
+  z-index: 3;
+  position: relative;
+}
+.ptUC {
+  font-size: 19px;
+  color: #5b5959;
+}
+.pUC {
+  color: #4d4b4b;
+  font-size: 21px;
+}
+.hrth2 {
+  padding-bottom: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+}
+.hroverview {
+  padding-left: 2.8rem;
+  background-color: #f9f9f9;
+  padding-top: 5px;
+  padding-bottom: 40px;
+  position: relative;
+  z-index: -1;
+}
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../img/icon-separator.png");
+  background-size: 40% auto;
+  background-position: center;
+  filter: blur(2px);
+  filter: opacity(20%);
+  z-index: 1;
+}
+.user-column {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-family: sans-serif;
+}
+.user-row {
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  width: 100%;
+}
+.user-row:hover {
+  background-color: orange;
+}
+.header-row {
+  font-weight: bold;
+  background-color: #f0f0f0;
+  cursor: default;
+  width: 100%;
+}
+.header-column {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}
+.user-row.header-column:hover {
+  background-color: #e0e0e0;
+}
+.user-data {
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+.group1 {
+  display: flex;
+}
+.leftsidebar1 {
+  border: 1px solid rgb(204 204 204);
+  background-color: rgb(66 140 226);
+  height: 210px;
+  width: 250px;
+}
+.lsb1h3 {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 40px;
+}
+.lsb1d {
+  text-align: left;
+  padding: 5px;
+  cursor: pointer;
+}
+.lsp {
+  color: white;
+  font-family: sans-serif;
+  cursor: pointer;
+  margin-left: 35px;
+}
+.mgroup {
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 480px) {
+  .leftsidebar1 {
+    display: none !important;
+  }
+  .hroverview {
+    padding-left: 1rem;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .hroverview {
+    padding-left: 1rem;
+  }
+  .lsb1h3 {
+    margin-left: 0.9rem;
+  }
+  .lsp {
+    margin-left: 0.7rem;
+  }
+}
