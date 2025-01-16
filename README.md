@@ -7,9 +7,9 @@ The HR Dashboard is a web-based application designed to streamline employee mana
 ## Features
 
 Sign-In: Secure login for authorized users to access the dashboard.
+Security: Protects sensitive employee information with secure authentication methods.
 
 ## Upcoming Features
 
 Employee Information Management: Edit, update, and manage details about employees such as personal information, position, department, and contact details.
 User-Friendly Interface: Intuitive and easy-to-navigate layout.
-Security: Protects sensitive employee information with secure authentication methods.

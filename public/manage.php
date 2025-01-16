@@ -26,11 +26,22 @@
     <?php include(__DIR__ . "/../include/buttonHeader.php"); ?>
     
     <?php if (isset($user)): ?>
-    <div class="dataSelector">
-      <a class="myemployeebtn" onclick="highlightBtn(this); loadMyEmployees()">My People</a>
-      <a class="recruitmentbtn" onclick="highlightBtn(this); clearEmployee()">Recruitment</a>
-      <a class="managetimebtn" onclick="highlightBtn(this); clearEmployee();">Manage Time</a>
-    </div>
+      <div class="dataSelector">
+        <div class="dataSelectorM">
+          <div class="groupButtons" onclick="highlightDiv(this); loadMyEmployees()">
+            <img class="myPeopleImg" src="../assets/img/My_People.png" alt="My People Logo"></img>
+            <p class="myemployeebtn">My People</p>
+          </div>
+          <div class="groupButtons" onclick="highlightDiv(this); clearEmployee()">
+            <img class="myRecruitmentImg" src="../assets/img/Recruitment.png" alt="My Recruitment Logo"></img>
+            <p class="recruitmentbtn">Recruitment</p>
+          </div>
+          <div class="groupButtons" onclick="highlightDiv(this); clearEmployee()">
+            <img class="myManageImg" src="../assets/img/Manage_Time.png" alt="Manage Time Logo"></img>
+            <p class="managetimebtn">Manage Time</p>
+          </div>
+        </div>
+      </div>
     <div class="search">
       <input type="text" id="searchBar" oninput="searchEmployees()" placeholder="Search Employees..." />
     </div>
@@ -61,10 +72,10 @@
     <?php else: ?>
     <?php endif; ?>
     <script>
-      function highlightBtn(elm) {
-          const buttons = document.querySelectorAll('.dataSelector a');
-          buttons.forEach(button => button.classList.remove('active'));
-          elm.classList.add('active');
+      function highlightDiv(elm) {
+        const divs = document.querySelectorAll('.groupButtons');
+        divs.forEach(div => div.classList.remove('active'))
+        elm.classList.add('active'); 
       }
       
       function loadMyEmployees() {
