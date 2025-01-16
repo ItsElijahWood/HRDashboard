@@ -14,21 +14,21 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>People Node</title>
-  <link rel="icon" href="../assets/img/favicon.png" type="image/png">
-  <link rel="stylesheet" href="../assets/css/login.css" />
-</head>
-<body>
-  <?php include(__DIR__ . "/../include/header.php"); ?> 
-  <?php include(__DIR__ . "/../include/buttonHeader.php"); ?> 
-
-  <?php if (isset($user)): ?>
-  <?php else: ?>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People Node</title>
+    <link rel="icon" href="../assets/img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="../assets/css/login.css" />
+  </head>
+  <body>
+    <?php include(__DIR__ . "/../include/header.php"); ?> 
+    <?php include(__DIR__ . "/../include/buttonHeader.php"); ?> 
+    
+    <?php if (isset($user)): ?>
+    <?php else: ?>
     <h1 class="h1l">Log in</h1>
-    <form action="../controllers/login_form.php" method="POST">
+    <form action="../controllers/forms/login_form.php" method="POST">
       <input 
         class="fieldForm" 
         type="email" 
@@ -45,6 +45,6 @@
         required><br><br>
       <button class="buttonForm" type="submit">Log in</button>
     </form>
-  <?php endif; ?>
-</body>
+    <?php endif; ?>
+  </body>
 </html>

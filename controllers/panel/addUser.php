@@ -1,5 +1,5 @@
 <?php
-namespace HRDashboard\Controller;
+namespace HRDashboard\Controller\Panel;
 
 class AddUser {
     private $conn;

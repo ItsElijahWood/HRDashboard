@@ -1,9 +1,9 @@
 <?php 
 require_once(__DIR__ . '/../../include/database/hrdata.php');
-require_once(__DIR__ . '/../../controllers/addPerson.php');
+require_once(__DIR__ . '/../../controllers/panel/addPerson.php');
 require_once(__DIR__ . '/../../include/session.php');
 
-use HRDashboard\Controller\AddPerson;
+use HRDashboard\Controller\Panel\AddPerson;
 
 $connConfig = new \HRDashboard\Include\ConnConfig;
 $userSession = new \HRDashboard\Include\UserSession;
@@ -57,98 +57,92 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Person</title>
     <link rel="icon" href="../../assets/img/favicon.png" type="image/png">
     <link rel="stylesheet" href="../../assets/css/adduser.css" />
-</head>
-<body>
+  </head>
+  <body>
     <?php include(__DIR__ . "/../../include/header.php"); ?> 
     <?php include(__DIR__ . "/../../include/buttonHeader.php"); ?> 
-
+    
     <?php if (isset($user)): ?>
     <h1>Add Person</h1>
     <p><?= htmlspecialchars($message) ?></p>
     <form method="POST" action="">
-    <label for="FullName">Full Name:*</label>
-    <input type="text" id="FullName" name="FullName" required><br><br>
-
-    <label for="JobTitle">Job Title:*</label>
-    <select id="JobTitle" name="JobTitle" required>
+      <label for="FullName">Full Name:*</label>
+      <input type="text" id="FullName" name="FullName" required><br><br>
+      <label for="JobTitle">Job Title:*</label>
+      <select id="JobTitle" name="JobTitle" required>
         <option value="">-- Select Job Title --</option>
         <?php foreach ($jobTitles as $title): ?>
-            <option value="<?= htmlspecialchars($title) ?>"><?= htmlspecialchars($title) ?></option>
+        <option value="<?= htmlspecialchars($title) ?>"><?= htmlspecialchars($title) ?></option>
         <?php endforeach; ?>
-    </select><br><br>
-
-    <label for="Department">Department:*</label>
-    <select id="Department" name="Department" required>
+      </select>
+      <br><br>
+      <label for="Department">Department:*</label>
+      <select id="Department" name="Department" required>
         <option value="">-- Select Department --</option>
         <?php foreach ($departments as $dept): ?>
-            <option value="<?= htmlspecialchars($dept) ?>"><?= htmlspecialchars($dept) ?></option>
+        <option value="<?= htmlspecialchars($dept) ?>"><?= htmlspecialchars($dept) ?></option>
         <?php endforeach; ?>
-    </select><br><br>
-
-    <label for="BusinessUnit">Business Unit:*</label>
-    <select id="BusinessUnit" name="BusinessUnit" required>
+      </select>
+      <br><br>
+      <label for="BusinessUnit">Business Unit:*</label>
+      <select id="BusinessUnit" name="BusinessUnit" required>
         <option value="">-- Select Business Unit --</option>
         <?php foreach ($businessUnits as $unit): ?>
-            <option value="<?= htmlspecialchars($unit) ?>"><?= htmlspecialchars($unit) ?></option>
+        <option value="<?= htmlspecialchars($unit) ?>"><?= htmlspecialchars($unit) ?></option>
         <?php endforeach; ?>
-    </select><br><br>
-
-    <label for="Gender">Gender:*</label>
-    <select id="Gender" name="Gender" required>
+      </select>
+      <br><br>
+      <label for="Gender">Gender:*</label>
+      <select id="Gender" name="Gender" required>
         <option value="">-- Select Gender --</option>
         <?php foreach ($genders as $gen): ?>
-            <option value="<?= htmlspecialchars($gen) ?>"><?= htmlspecialchars($gen) ?></option>
+        <option value="<?= htmlspecialchars($gen) ?>"><?= htmlspecialchars($gen) ?></option>
         <?php endforeach; ?>
-    </select><br><br>
-
-    <label for="Ethnicity">Ethnicity:*</label>
-    <select id="Ethnicity" name="Ethnicity" required>
+      </select>
+      <br><br>
+      <label for="Ethnicity">Ethnicity:*</label>
+      <select id="Ethnicity" name="Ethnicity" required>
         <option value="">-- Select Ethnicity --</option>
         <?php foreach ($ethnicities as $eth): ?>
-            <option value="<?= htmlspecialchars($eth) ?>"><?= htmlspecialchars($eth) ?></option>
+        <option value="<?= htmlspecialchars($eth) ?>"><?= htmlspecialchars($eth) ?></option>
         <?php endforeach; ?>
-    </select><br><br>
-
-    <label for="Age">Age:*</label>
-    <input type="number" id="Age" name="Age" required><br><br>
-
-    <label for="HireDate">Hire Date:*</label>
-    <input type="date" id="HireDate" name="HireDate" required><br><br>
-
-    <label for="AnnualSalary">Annual Salary:*</label>
-    <input type="number" id="AnnualSalary" name="AnnualSalary" step="0.01" required><br><br>
-
-    <label for="Bonus">Bonus % (0 to 100):*</label>
-    <input type="number" id="Bonus" name="Bonus" min="0" max="100" step="0.01" required><br><br>
-
-    <label for="Country">Country:*</label>
-    <select id="Country" name="Country" required>
+      </select>
+      <br><br>
+      <label for="Age">Age:*</label>
+      <input type="number" id="Age" name="Age" required><br><br>
+      <label for="HireDate">Hire Date:*</label>
+      <input type="date" id="HireDate" name="HireDate" required><br><br>
+      <label for="AnnualSalary">Annual Salary:*</label>
+      <input type="number" id="AnnualSalary" name="AnnualSalary" step="0.01" required><br><br>
+      <label for="Bonus">Bonus % (0 to 100):*</label>
+      <input type="number" id="Bonus" name="Bonus" min="0" max="100" step="0.01" required><br><br>
+      <label for="Country">Country:*</label>
+      <select id="Country" name="Country" required>
         <option value="">-- Select Country --</option>
         <?php foreach ($countries as $country): ?>
-            <option value="<?= htmlspecialchars($country) ?>"><?= htmlspecialchars($country) ?></option>
+        <option value="<?= htmlspecialchars($country) ?>"><?= htmlspecialchars($country) ?></option>
         <?php endforeach; ?>
-    </select><br><br>
-
-    <label for="City">City:*</label>
-    <select id="City" name="City" required>
+      </select>
+      <br><br>
+      <label for="City">City:*</label>
+      <select id="City" name="City" required>
         <option value="">-- Select City --</option>
         <?php foreach ($cities as $city): ?>
-            <option value="<?= htmlspecialchars($city) ?>"><?= htmlspecialchars($city) ?></option>
+        <option value="<?= htmlspecialchars($city) ?>"><?= htmlspecialchars($city) ?></option>
         <?php endforeach; ?>
-    </select><br><br>
-
-    <label for="ExitDate">Exit Date:</label>
-    <input type="date" id="ExitDate" name="ExitDate"><br><br>
-
-    <button type="submit">Add User</button>
-  </form>
-  <?php else: ?>
-  <?php endif; ?>
-</body>
+      </select>
+      <br><br>
+      <label for="ExitDate">Exit Date:</label>
+      <input type="date" id="ExitDate" name="ExitDate"><br><br>
+      <button type="submit">Add User</button>
+    </form>
+    <?php else: ?>
+    <?php endif; ?>
+  </body>
 </html>

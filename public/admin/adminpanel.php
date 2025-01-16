@@ -13,55 +13,61 @@ $fields = ['ID', 'Username', 'AccessLevel'];
 
 if ($userSession->isAuthenticated()) {
   $user = $userSession->getUser();
+  $userId = $user['ID'];
   $pageButtonTitle = "Admin Panel";
 } else {
   $user = null;
 }
+
+if (isset($user['AccessLevel']) && $user['AccessLevel'] === 'admin') {
+} else {
+  die("You are not an admin.");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel</title>
-  <link rel="icon" href="../../assets/img/favicon.png" type="image/png">
-  <link rel="stylesheet" href="../../assets/css/adminpanel.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="icon" href="../../assets/img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="../../assets/css/adminpanel.css" />
+  </head>
+  <body>
     <?php include(__DIR__ . "/../../include/header.php"); ?>
     <?php include(__DIR__ . "/../../include/buttonHeader.php"); ?>
-
+    
     <?php if (isset($user)): ?>
-        <div class="hroverview">
-            <h2 class="hrth2">HR Overview</h2>
-            <div class="background"></div>
-            <div class="totalUCD">
-                <p class="ptUC">Total HR's</p>
-                <p class="pUC"><?php echo $userCount; ?></p>
-            </div>
-        </div>
-        <div class="mgroup">
-          <div class="group1">
-            <div id="leftsidebar1" class="leftsidebar1">
-                  <h3 class="lsb1h3">Manage Panel</h3>
-                  <div class="lsb1d" onclick="window.location.href='<?php echo $fulldir['base_url']; ?>/public/admin/adduser'">
-                      <a class="lsp" onclick="window.location.href='<?php echo $fulldir['base_url']; ?>/public/admin/adduser'">Add User</a>
-                  </div>
+    <div class="hroverview">
+      <h2 class="hrth2">HR Overview</h2>
+      <div class="background"></div>
+      <div class="totalUCD">
+        <p class="ptUC">Total HR's</p>
+        <p class="pUC"><?php echo $userCount; ?></p>
+      </div>
+    </div>
+    <div class="mgroup">
+      <div class="group1">
+        <div id="leftsidebar1" class="leftsidebar1">
+          <h3 class="lsb1h3">Manage Panel</h3>
+          <div class="lsb1d" onclick="window.location.href='<?php echo $fulldir['base_url']; ?>/public/admin/adduser'">
+            <a class="lsp" onclick="window.location.href='<?php echo $fulldir['base_url']; ?>/public/admin/adduser'">Add User</a>
           </div>
         </div>
-        <div class="user-data" id="user-data-container">
-        </div>
       </div>
-      <script>
-        fetch("../../controllers/getUserData.php")
-                .then((response) => response.text())
-                .then((data) => {
-                // Update employee data container with the content.
-                document.getElementById("user-data-container").innerHTML = data;
-            })
-            .catch((error) => console.error("Error fetching employee data:", error));      
-      </script>
+      <div class="user-data" id="user-data-container">
+      </div>
+    </div>
+    <script>
+      fetch("../../controllers/initialiseData/getUserData.php")
+              .then((response) => response.text())
+              .then((data) => {
+              // Update employee data container with the content.
+              document.getElementById("user-data-container").innerHTML = data;
+          })
+          .catch((error) => console.error("Error fetching employee data:", error));      
+    </script>
     <?php else: ?>
     <?php endif; ?>
-</body>
+  </body>
 </html>

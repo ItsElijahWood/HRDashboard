@@ -1,15 +1,15 @@
 Only a testing file not to be used in production
 <?php
-  $mysqli = require_once __DIR__ . "/../include/database/hrdata.php";
+  $mysqli = require_once __DIR__ . "/../../include/database/hrdata.php";
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = mysqli_real_escape_string($mysqli, $_POST['user']);
     $pass = $_POST['password'];
     $age = (int) $_POST['age'];
     $email = mysqli_real_escape_string($mysqli, $_POST['email']);
-    $sex = mysqli_real_escape_string($mysqli, $_POST['sex']);
+    $gender = mysqli_real_escape_string($mysqli, $_POST['gender']);
     
-    if (empty($user) || empty($pass) || empty($age) || empty($email) || empty($sex)) {
+    if (empty($user) || empty($pass) || empty($age) || empty($email) || empty($gender)) {
       echo "All fields required";
       exit;
     }
@@ -32,7 +32,7 @@ Only a testing file not to be used in production
     $stmt->bind_param('sss', $user, $hashedPassword, $email);
     
     if ($stmt->execute()) {
-      header("Location: ../index");
+      header("Location: ../../");
     } else {
       echo "Error: " . $stmt->error;
     }
@@ -56,7 +56,7 @@ Incase of trouble signing up 👇
         <input type="number" id="age" name="age" required><br><br>
 
         <label for="sex">Sex:</label><br>
-        <input type="text" id="sex" name="sex" required><br><br>
+        <input type="text" id="gender" name="gender" required><br><br>
 
         <button type="submit">Submit</button>
 </form>

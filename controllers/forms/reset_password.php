@@ -1,7 +1,7 @@
 <?php
-namespace HRDashboard\Controller;
+namespace HRDashboard\Controller\Forms;
 
-require_once(__DIR__ . '/../include/database/hrdata.php');
+require_once(__DIR__ . '/../../include/database/hrdata.php');
 
 $is_invalid = false;
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 if ($conn->query($updateSql)) {
                     echo "Password reset successfully.";
-                    header("Location: ../index");
+                    header("Location: ../../");
                     exit;
                 } else {
                     echo "Error updating password.";

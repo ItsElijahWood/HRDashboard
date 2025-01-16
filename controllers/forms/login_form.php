@@ -1,7 +1,7 @@
 <?php
-namespace HRDashboard\Controller;
+namespace HRDashboard\Controller\Forms;
 
-require_once(__DIR__ . '/../include/database/hrdata.php');
+require_once(__DIR__ . '/../../include/database/hrdata.php');
 
 $is_invalid = false;
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             session_regenerate_id();
             $_SESSION["user_id"] = $user["ID"];
 
-            header("Location: ../");
+            header("Location: ../../");
             exit;
         } else {
             echo "Password verification failed.";
