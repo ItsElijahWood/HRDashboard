@@ -1,4 +1,9 @@
 <?php
+/*
+ * Copyright (c) 2025 Elijah Wood. All rights reserved.
+ * Unauthorized copying of this file, via any medium, is strictly prohibited.
+ * Proprietary and confidential.
+ */
 namespace HRDashboard\Include\Render;
 
 class RenderUserDivs {

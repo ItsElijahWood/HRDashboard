@@ -3,7 +3,6 @@ namespace HRDashboard;
 
 require_once(__DIR__ . "/include/session.php");
 include(__DIR__ . "/./controllers/data/data_fetch_counter.php");
-include(__DIR__ . "/./controllers/data/data_fetch_salary.php");
 include(__DIR__ . "/./controllers/data/data_fetch_country.php");
 include(__DIR__ . "/./controllers/data/data_fetch_department.php");
 
@@ -13,14 +12,12 @@ $userSession = new \HRDashboard\Include\UserSession();
 if ($userSession->isAuthenticated()) {
     $user = $userSession->getUser(); 
     $totalCountEmployees = fetchTotalCount($conn, 'Employee ID');
-    $averageSalary = fetchAverageSalary($conn, 'Annual Salary');
     
     $pageButtonTitle = "Homepage";
 } else {
     $user = null;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,8 +59,8 @@ if ($userSession->isAuthenticated()) {
             <p class="hremployeediv3p1">Country Percentage</p>
             <div class="country-percentages">
               <?php
-                if (!empty($countryPercentages)) {
-                  foreach ($countryPercentages as $country => $percentage) {
+                if (!empty($employmentData)) {
+                  foreach ($employmentPercentages as $country => $percentage) {
                     echo "<p class='country-entry'>$country: " . htmlspecialchars($percentage) . "%</p>";
                   }
                 } else {
@@ -73,10 +70,6 @@ if ($userSession->isAuthenticated()) {
             </div> 
           </div>  
         </div>
-        <div class="hremployeediv2">
-          <p class="hremployeediv2p1">Average Salary</p>
-          <p class="hremployeediv2p2"><?php echo htmlspecialchars($averageSalary); ?></p> 
-        </div>    
       </div>
     </div>
   <?php else: ?>

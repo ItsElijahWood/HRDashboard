@@ -1,62 +1,57 @@
 <?php
-    require_once(__DIR__ . '/../../include/database/hrdata.php');
+/*
+* Copyright (c) 2025 Elijah Wood. All rights reserved.
+* Unauthorized copying of this file, via any medium, is strictly prohibited.
+* Proprietary and confidential.
+*/
+require_once(__DIR__ . '/../../include/database/hrdata.php');
 
-    $connConfig = new \HRDashboard\Include\ConnConfig;
-    $conn = $connConfig->getConnection();
+$connConfig = new \HRDashboard\Include\ConnConfig;
+$conn = $connConfig->getConnection();
 
-    function fetchCountryData($conn, $columnNameCY, $tableName = 'data') {
+// Fetch data from params and selects $columnName
+function fetchColumnData($conn, $columnName, $tableName = 'contract') {
+	$columnName = trim($columnName);
 
-        $columnNameCY = trim($columnNameCY);
+	$sql = "SELECT `$columnName` FROM `$tableName`";
+	$result = $conn->query($sql);
 
-        // Query get all data from the Country column.
-        $sql = "SELECT $columnNameCY FROM $tableName";
-        $result = $conn->query($sql);
+	if ($result && $result->num_rows > 0) {
+			$data = [];
+			while ($row = $result->fetch_assoc()) {
+					$data[] = $row[$columnName];
+			}
+			return $data;
+	} else {
+			return [];
+	}
+}
 
-        if ($result && $result->num_rows > 0) {
-            $countryData = [];
-            while ($row = $result->fetch_assoc()) {
-                // Store the country data in an array.
-                $countryData[] = $row[$columnNameCY];
-            }
-            // Return the country data array.
-            return $countryData;
-        } else {
-            return [];
-        }
-    }
+// Calculate percentages for each value
+function calculatePercentages($data) {
+	$totalCount = count($data);
 
-    // Calculate percentage of each country.
-    function calculateCountryPercentages($countryData) {
-        $totalCount = count($countryData);
-        
-        // Filter the country data to keep only strings or integers.
-        $countryData = array_filter($countryData, function($value) {
-            return is_string($value) || is_int($value);
-        });
-    
-        $countryCounts = array_count_values($countryData);
-        $countryPercentages = [];
-    
-        foreach ($countryCounts as $country => $count) {
-            if (empty($country) || !is_string($country)) {
-                continue;
-            }
-    
-            $percentage = ($count / $totalCount) * 100;
-            // Round to 2 decimal places.
-            $countryPercentages[$country] = round($percentage, 2);       
-        }
-    
-        return $countryPercentages;
-    }
-    
+	$filteredData = array_filter($data, function ($value) {
+			return is_string($value) || is_int($value);
+	});
 
-    $columnNameCY = 'Country'; 
-    $countryData = fetchCountryData($conn, $columnNameCY);
-  
-    if (!empty($countryData)) {
-        $countryPercentages = calculateCountryPercentages($countryData);
-    } else {
-        echo "No data available for countries.";
-    }
+	$valueCounts = array_count_values($filteredData);
+	$percentages = [];
+
+	foreach ($valueCounts as $value => $count) {
+			$percentage = ($count / $totalCount) * 100;
+			$percentages[$value] = round($percentage, 2);
+	}
+
+	return $percentages;
+}
+
+$columnName = 'Employment type';
+$employmentData = fetchColumnData($conn, $columnName);
+
+if (!empty($employmentData)) {
+	$employmentPercentages = calculatePercentages($employmentData);
+} else {
+  echo "No data available for Employment type.";
+}
 ?>

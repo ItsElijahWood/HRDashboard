@@ -52,11 +52,11 @@
           <div class="lsb1d" onclick="window.location.href='<?php echo $fulldir['base_url']; ?>/public/panel/addperson'">
             <a class="lsp" onclick="window.location.href='<?php echo $fulldir['base_url']; ?>/public/panel/addperson'">Add Person</a>
           </div>
-          <div class="lsb1d">
-            <a class="lsp" onclick="">Add Job Title</a>
+          <div class="lsb1d" onclick="window.location.href='<?php echo $fulldir['base_url']; ?>/public/panel/addjobtitle'">
+            <a class="lsp" onclick="window.location.href='<?php echo $fulldir['base_url']; ?>/public/panel/addjobtitle'">Add Job Title</a>
           </div>
-          <div class="lsb1d">
-            <a class="lsp" onclick="">Add Department</a>
+          <div class="lsb1d" onclick="window.location.href='<?php echo $fulldir['base_url']; ?>/public/panel/add_department'">
+            <a class="lsp" onclick="window.location.href='<?php echo $fulldir['base_url']; ?>/public/panel/add_department'">Add Department</a>
           </div>
           <div class="lsb1d">
             <a class="lsp" onclick="">Browse Starters</a>

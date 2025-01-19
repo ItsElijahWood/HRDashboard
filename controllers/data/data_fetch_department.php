@@ -1,62 +1,62 @@
 <?php
-  require_once(__DIR__ . '/../../include/database/hrdata.php');
+/*
+* Copyright (c) 2025 Elijah Wood. All rights reserved.
+* Unauthorized copying of this file, via any medium, is strictly prohibited.
+* Proprietary and confidential.
+*/
+require_once(__DIR__ . '/../../include/database/hrdata.php');
+$connConfig = new \HRDashboard\Include\ConnConfig;
+$conn = $connConfig->getConnection();
 
-  $connConfig = new \HRDashboard\Include\ConnConfig;
-  $conn = $connConfig->getConnection();
+// Fetch data from params and trims the data to select the $columnNameDT
+function fetchDepartmentData($conn, $columnNameDT, $tableName = 'contract') {
+	$columnNameDT = trim($columnNameDT);
 
-  function fetchDepartmentData($conn, $columnNameDT, $tableName = 'data') {
+	$sql = "SELECT $columnNameDT FROM $tableName";
+	$result = $conn->query($sql);
 
-    $columnNameDT = trim($columnNameDT);
+	if ($result && $result->num_rows > 0) {
+		$departmentData = [];
+		while ($row = $result->fetch_assoc()) {
+			$departmentData[] = $row[$columnNameDT];
+		}
+		
+		return $departmentData;
+	} else {
+		return [];
+	}
+}
 
-    // Query to get all data from the Department column.
-    $sql = "SELECT $columnNameDT FROM $tableName";
-    $result = $conn->query($sql);
+// Calculate percentage of each department.
+function calculateDepartmentPercentages($departmentData) {
+	$totalCount = count($departmentData);
+	
+	$departmentData = array_filter($departmentData, function($value) {
+			return is_string($value) || is_int($value);
+	});
 
-    if ($result && $result->num_rows > 0) {
-      $departmentData = [];
-      while ($row = $result->fetch_assoc()) {
-        // Store the department data in an array.
-        $departmentData[] = $row[$columnNameDT];
-      }
-        // Return the department data array.
-        return $departmentData;
-      } else {
-        return [];
-      }
-    }
+	$departmentCounts = array_count_values($departmentData);
+	$departmentPercentages = [];
 
-  // Calculate percentage of each department.
-  function calculateDepartmentPercentages($departmentData) {
-    $totalCount = count($departmentData);
-    
-    // Filter the department data to keep only strings or integers.
-    $departmentData = array_filter($departmentData, function($value) {
-        return is_string($value) || is_int($value);
-    });
+	foreach ($departmentCounts as $department => $count) {
+		if (empty($department) || !is_string($department)) {
+			continue;
+		}
 
-    $departmentCounts = array_count_values($departmentData);
-    $departmentPercentages = [];
+		$percentage = ($count / $totalCount) * 100;
+		$departmentPercentages[$department] = round($percentage, 2);
+	}
 
-    foreach ($departmentCounts as $department => $count) {
-        if (empty($department) || !is_string($department)) {
-            continue;
-        }
-
-        $percentage = ($count / $totalCount) * 100;
-        // Round to 2 decimal places.
-        $departmentPercentages[$department] = round($percentage, 2);
-    }
-
-    return $departmentPercentages;
+	return $departmentPercentages;
 }
 
 
-  $columnNameDT = 'Department'; 
-  $departmentData = fetchDepartmentData($conn, $columnNameDT);
+$columnNameDT = 'Department'; 
+$departmentData = fetchDepartmentData($conn, $columnNameDT);
 
-  if (!empty($departmentData)) {
-    $departmentPercentages = calculateDepartmentPercentages($departmentData);
-  } else {
-      echo "No data available for departments.";
-  }
+if (!empty($departmentData)) {
+	$departmentPercentages = calculateDepartmentPercentages($departmentData);
+} else {
+	echo "No data available for departments.";
+}
 ?>

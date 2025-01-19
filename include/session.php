@@ -1,54 +1,59 @@
 <?php
+/*
+ * Copyright (c) 2025 Elijah Wood. All rights reserved.
+ * Unauthorized copying of this file, via any medium, is strictly prohibited.
+ * Proprietary and confidential.
+ */
 namespace HRDashboard\Include;
 
 require_once __DIR__ . '/./database/hrdata.php';
 
 class UserSession {
-    public $user;
-    private $connConfig;
+	public $user;
+	private $connConfig;
 
-    public function __construct() {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+	public function __construct() {
+		if (session_status() === PHP_SESSION_NONE) {
+			session_start();
+		}
 
-        $this->connConfig = new ConnConfig();
-        $conn = $this->connConfig->getConnection(); 
+		$this->connConfig = new ConnConfig();
+		$conn = $this->connConfig->getConnection(); 
 
-        // Check if a session ID exists for the user
-        if (isset($_SESSION["user_id"])) {
-            $this->user = $this->getUserById($_SESSION["user_id"], $conn);
-        } else {
-            $this->user = null;
-        }
-    }
+		// Check if a session ID exists for the user
+		if (isset($_SESSION["user_id"])) {
+			$this->user = $this->getUserById($_SESSION["user_id"], $conn);
+		} else {
+			$this->user = null;
+		}
+	}
 
-    // Fetch user data by user ID
-    private function getUserById($userId, $conn) {
-        $sql = "SELECT * FROM users WHERE ID = ?";
-        $stmt = $conn->prepare($sql);
+	// Fetch user data by user ID
+	private function getUserById($userId, $conn) {
+		$sql = "SELECT * FROM users WHERE ID = ?";
+		$stmt = $conn->prepare($sql);
 
-        if (!$stmt) {
-            die("SQL preparation failed: " . $conn->error);
-        }
+		if (!$stmt) {
+			die("SQL preparation failed: " . $conn->error);
+		}
 
-        $stmt->bind_param("i", $userId);
-        $stmt->execute();
-        $result = $stmt->get_result();
+		$stmt->bind_param("i", $userId);
+		$stmt->execute();
+		$result = $stmt->get_result();
 
-        if ($result->num_rows > 0) {
-            return $result->fetch_assoc();
-        }
+		if ($result->num_rows > 0) {
+			return $result->fetch_assoc();
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    public function isAuthenticated() {
-        return $this->user !== null;
-    }
+	public function isAuthenticated() {
+		return $this->user !== null;
+	}
 
-    public function getUser() {
-        return $this->user;
-    }
+	public function getUser() {
+		return $this->user;
+	}
 }
 ?>
